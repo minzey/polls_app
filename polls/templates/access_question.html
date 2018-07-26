@@ -1,0 +1,15 @@
+{% autoescape off %}
+Hi {{ user.name }},
+
+{% if voting == False %}
+Please click on the link below to add your answer to poll:
+
+http://{{ domain }}{% url 'answer' uid=uid qid=qid token=token %}
+
+{% else %}
+Please click on the link below to vote for your favourite answer:
+
+http://{{ domain }}{% url 'vote' uid=uid qid=qid token=token %}
+{% endif %}
+
+{% endautoescape %}

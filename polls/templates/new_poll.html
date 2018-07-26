@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+
+{% block title %}
+<h1>Create a new Poll</h1>
+{% endblock %}
+
+{% block content %}
+
+<div>
+    
+    <form class="form-group form-inline" role="form" action="" method="POST" id="form_set">
+        {{ user_formset.management_form }}
+        <input class="form-control question" type="text" name="question" placeholder="What do you want to ask?" required>
+        
+        <br><br>
+        <h4> Enter users to send this poll to for their response</h4>
+        
+        {% bootstrap_formset_errors user_formset %}
+        {% for form in user_formset.forms %}
+        <div class="row">
+                {% bootstrap_form form %}
+        </div>
+        {% endfor %}
+        
+        
+    
+</div>
+<input type="button" class="btn btn-primary" value="Add More" id="add_more">
+{% csrf_token %}
+<input type="submit" class="btn btn-primary" value="Send Poll" id="send_poll">
+<div id="empty_form" style="display:none">
+    <div class="row">
+    {% bootstrap_form user_formset.empty_form %}
+    </div>
+</div>
+<script>
+    $('#add_more').click(function() {
+        var form_idx = $('#id_form-TOTAL_FORMS').val();
+        $('#form_set').append($('#empty_form').html().replace(/__prefix__/g, form_idx));
+        $('#id_form-TOTAL_FORMS').val(parseInt(form_idx) + 1);
+    });
+</script>
+{% endblock %}

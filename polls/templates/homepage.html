@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<h1>Polls App</h1>
+<h2>Create polls anonymously and let your friends participate in it<br>
+Because answer to everything is not 42!</h2>
+{% endblock %}
+
+
+
+{% block content %}
+<div class="create_poll">
+    <a href="{% url 'new_poll' %}" class="btn btn-primary" role="button">Create Poll</a>
+</div>
+{% endblock %}

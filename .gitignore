@@ -1,0 +1,4 @@
+.pyc
+zenatix/__pychache__
+polls/__pycache__
+db.sqlite3

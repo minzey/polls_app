@@ -1,0 +1,13 @@
+Hi,
+Thank you for participating in the poll.
+
+Here are the results:
+Question: {{ question.question_text }}
+{% with answers|first as top_answer %}
+Top Answer: {{top_answer.answer_text}}
+{% endwith %}
+
+All answers in decreasing order of votes:
+{% for answer in answers %}
+    {{ answer.answer_text }} -- {{ answer.votes }} vote{{ answer.votes|pluralize }} ( {{answer.avg}}% )
+{% endfor %}

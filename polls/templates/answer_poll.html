@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+
+{% block title %}
+<h1>Answer the Poll</h1>
+{% endblock %}
+
+{% block content %}
+<div id="form">
+    <form class="form-group" role="form" action="" method="POST">
+        <h2>{{question.question_text}}</h2>
+        <input class="form-control" type="text" name="answer" placeholder="Your answer">
+        {% csrf_token %}
+        <input type="submit" class="btn btn-primary" value="Submit" id="submit_answer">
+
+</div>
+{% endblock %}
+

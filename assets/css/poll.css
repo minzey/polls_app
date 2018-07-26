@@ -1,0 +1,59 @@
+      html, body,input, h1, h2, div,p,img{
+        margin: 0 0;
+        padding: 0 0;
+        border: none;
+        font-family:'helvetica neue';
+        font-size: 20px;
+        font-weight: 200;
+        color: white;
+        
+      }
+      .main{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: linear-gradient(to bottom,rgba(0,0,0,0.5),transparent),url(https://picsum.photos/1400/700/?image=974);
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+      h1, h2{
+        font-family: 'Amatic SC', cursive;
+        text-shadow:0 0 4px rgba(0, 0, 0, 0.72), 0 0 14px rgba(255, 255, 255, 0.45);
+        font-size: 5em;
+        font-weight: 500;
+        color: white;
+      }
+      h1{
+        margin-top: 30px;
+        flex: 1;
+        text-align: center
+      }
+      h2{
+        font-size: 3em;
+        flex: 1;
+        text-align: center
+      }
+      .content{
+        flex: 4;
+      }
+      /*input{
+        padding: 5px 10px;
+        border-radius: 5px;
+        border: 1px solid aqua;
+        width: 500px;
+      }
+      input:focus{
+        box-shadow: 0.5px 0.5px 15px aqua;
+        border: none;
+
+      }*/
+      .form-control.question{
+          font-size: 1em;
+      }
+      input{
+          margin: 5px;
+      }
+     
+      

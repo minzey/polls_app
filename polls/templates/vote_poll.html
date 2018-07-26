@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+
+{% block title %}
+<h1>Let's vote!</h1>
+{% endblock %}
+
+{% block content %}
+<div id="form">
+    <form class="form-group" role="form" action="" method="POST">
+        <h2>{{question.question_text}}</h2>
+        {% for answer in answers %}
+        <div class="radio">
+            <input type="radio" name="answer" id="answer{{ forloop.counter }}" value="{{ answer.id }}">
+            <label for="answer{{ forloop.counter }}">{{ answer.answer_text }}</label><br>
+        </div>
+        {% endfor %}
+        {% csrf_token %}
+        <input type="submit" class="btn btn-primary" value="Submit" id="submit_answer">
+
+</div>
+{% endblock %}
+
