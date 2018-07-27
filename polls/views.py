@@ -28,7 +28,7 @@ def send_email(subject, user, question, token, domain, voting=False):
 def send_result(subject, user, question, domain):
     answers = question.answer_set.all().order_by('-votes')
     max_votes = answers.aggregate(Max('votes'))
-    top_answers = answers.filter(votes=max_votes)
+    top_answers = answers.filter(votes=max_votes['votes__max'])
     total_count = len(answers)
     for answer in answers:
         answer.avg = answer.votes/total_count*100
