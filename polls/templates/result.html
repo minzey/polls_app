@@ -1,15 +1,14 @@
-Hi,<br>
+Hi,
 Thank you for participating in the poll.
 
-Here are the results:<br>
-Question: {{ question.question_text }}
+Here are the results for the Question: {{ question.question_text }}
 
 Top Answer(s): 
 {% for ta in top_answers %}
     {{ta.answer_text}}
 {% endfor %}
 
-All answers in decreasing order of votes:
+All answers:
 {% for answer in answers %}
     {{ answer.answer_text }} -- {{ answer.votes }} vote{{ answer.votes|pluralize }} ( {{answer.avg}}% )
 {% endfor %}

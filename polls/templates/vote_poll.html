@@ -11,7 +11,7 @@
         <h2>{{question.question_text}}</h2>
         {% for answer in answers %}
         <div class="radio">
-            <input type="radio" name="answer" id="answer{{ forloop.counter }}" value="{{ answer.id }}">
+            <input type="radio" name="answer" id="answer{{ forloop.counter }}" value="{{ answer.id }}" required>
             <label for="answer{{ forloop.counter }}">{{ answer.answer_text }}</label><br>
         </div>
         {% endfor %}
