@@ -24,7 +24,7 @@ def send_email(subject, user, question, token, domain, voting=False):
     })
     print(message)
     print(user.email)
-    EmailThread(subject, message, 'support@localhost', [user.email], fail_silently=False).start()
+    EmailThread(subject, message, 'support@letspoll', [user.email], fail_silently=False).start()
 
 def send_result(subject, user, question, domain):
     answers = question.answer_set.all().order_by('-votes')
@@ -35,7 +35,7 @@ def send_result(subject, user, question, domain):
         'answers': answers,
         'question': question
     })
-    EmailThread(subject, message, 'support@localhost', [user.email], fail_silently=False).start()
+    EmailThread(subject, message, 'support@letspoll', [user.email], fail_silently=False).start()
     user.delete()
 
 def generate_token():
