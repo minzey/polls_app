@@ -11,6 +11,7 @@ from polls.async_email import EmailThread
 from django import forms as django_forms
 from django.http import HttpResponseRedirect
 from django.contrib import messages
+from django.db.models import Max
 
 def send_email(subject, user, question, token, domain, voting=False): 
     subject = subject
@@ -22,16 +23,17 @@ def send_email(subject, user, question, token, domain, voting=False):
         'token': token,
         'voting': voting,
     })
-    print(message)
-    print(user.email)
     EmailThread(subject, message, 'support@letspoll', [user.email], fail_silently=False).start()
 
 def send_result(subject, user, question, domain):
     answers = question.answer_set.all().order_by('-votes')
+    max_votes = answers.aggregate(Max('votes'))
+    top_answers = answers.filter(votes=max_votes)
     total_count = len(answers)
     for answer in answers:
         answer.avg = answer.votes/total_count*100
     message = render_to_string('result.html', {
+        'top_answers': top_answers,
         'answers': answers,
         'question': question
     })
