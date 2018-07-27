@@ -8,19 +8,6 @@ class UserForm(forms.ModelForm):
         model = User
         fields = '__all__'
 
-# class NoEmptyFormsAllowedBaseFormSet(forms.BaseFormSet):
-#     def clean(self):
-#         print('here')
-#         if not self.has_changed():
-#             print('empty formset!!!!!!!')
-#             raise forms.ValidationError("Please enter atleast one user details")
-
-# class RequiredFormSet(BaseFormSet):
-#     def __init__(self, *args, **kwargs):
-#         super(RequiredFormSet, self).__init__(*args, **kwargs)
-#         self.forms[0].empty_permitted = False
-
-
 class RequiredFormSet(forms.BaseModelFormSet):
     def clean(self):
         if any(self.errors):

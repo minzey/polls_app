@@ -13,6 +13,7 @@ from django.http import HttpResponseRedirect
 from django.contrib import messages
 from django.db.models import Max
 
+
 def send_email(subject, user, question, token, domain, voting=False): 
     subject = subject
     message = render_to_string('access_question.html', {
